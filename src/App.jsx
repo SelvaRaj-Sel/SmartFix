@@ -13,7 +13,6 @@ import Brands from './components/BrandsAbout.jsx'
 import Contact from './components/Contact.jsx'
 import Info from './components/Info.jsx'
 import Footer from './components/Footer.jsx'
-import MouseGlow from './components/MouseGlow.jsx'
 import AboutPage from './pages/AboutPage.jsx'
 
 function ScrollToHash() {
@@ -67,7 +66,6 @@ function App() {
 
   return (
     <>
-      <MouseGlow />
       {/* <Info /> */}
       <Navbar />
       <ScrollToHash />

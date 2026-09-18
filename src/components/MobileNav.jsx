@@ -30,7 +30,7 @@ const MobileNav = ({ navItems, scrolled }) => {
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.35, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="absolute left-30 right-2 top-20 overflow-hidden px-2 lg:hidden"
+            className="absolute left-0 right-0 top-full overflow-hidden px-5 lg:hidden"
           >
             <div className="mb-5 rounded-2xl border border-white/10 bg-[#081525]/95 p-3 shadow-2xl backdrop-blur-xl">
               {navItems.map((item, index) => (

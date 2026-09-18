@@ -13,7 +13,7 @@ const slides = [
 
 const heroContent = {
   eyebrow: "We Are System Integrator",
-  title: ["Industrial Automation", "Powered by the Best."],
+  title: ["Industrial Automation", "Powered by the Best"],
   description:
     "Your trusted product for Rockwell Automation and Siemens solutions. We deliver expert system integration, commissioning, migration, and 24/7 support for industries across India.",
 };
@@ -91,7 +91,7 @@ const Hero = () => {
     <section
       ref={sectionRef}
       id="home"
-      className="relative isolate h-full min-h-[650px] max-h-[920px] overflow-hidden bg-[#06111d] text-white"
+      className="relative isolate min-h-[700px] overflow-hidden bg-[#06111d] text-white sm:min-h-[650px] lg:min-h-[600px]"
       style={{ perspective: 1200 }}
     >
       {/* Parallax background images with AnimatePresence */}
@@ -115,17 +115,16 @@ const Hero = () => {
         className="absolute inset-0 bg-[#06111d]"
         style={{ opacity: overlayOpacity }}
       />
-      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(3,10,18,0.94)_0%,rgba(3,10,18,0.73)_36%,rgba(3,10,18,0.2)_72%,rgba(3,10,18,0.42)_100%)]" />
-      <div className="absolute inset-0 bg-[linear-gradient(0deg,rgba(3,10,18,0.84)_0%,transparent_38%,rgba(3,10,18,0.3)_100%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(3,10,18,0.96)_0%,rgba(3,10,18,0.82)_38%,rgba(3,10,18,0.25)_72%,rgba(3,10,18,0.48)_100%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(0deg,rgba(3,10,18,0.9)_0%,transparent_42%,rgba(3,10,18,0.22)_100%)]" />
 
       {/* Content with parallax offset */}
       <motion.div
-        className="relative mx-auto flex min-h-[650px] max-w-7xl items-center px-5 pb-28 pt-28 sm:px-8 lg:min-h-[760px] lg:px-12 lg:pb-24 lg:pt-32"
-        style={{ y: contentY }}
+        className="relative mx-auto flex min-h-[620px] max-w-7xl items-center px-5 pb-24 pt-28 sm:min-h-[760px] sm:px-8 sm:pb-28 sm:pt-32 lg:min-h-screen lg:px-12 lg:pb-24 lg:pt-32"
       >
-        <div className="max-w-xl pl-5 sm:pl-8 lg:max-w-2xl" style={{ perspective: 800 }}>
+        <div className="w-full max-w-xl lg:max-w-2xl" style={{ perspective: 800 }}>
           <motion.div
-            className="mb-6 flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.24em] text-(--primary) sm:mb-8"
+            className="mb-5 flex items-center gap-3 text-[10px] font-bold uppercase tracking-[0.24em] text-(--primary) sm:mb-7 sm:text-xs"
             variants={textVariants}
             initial="hidden"
             animate="visible"
@@ -136,7 +135,7 @@ const Hero = () => {
           </motion.div>
 
           <motion.h1
-            className="max-w-2xl text-2xl font-semibold leading-[0.98] tracking-tight text-white sm:text-6xl lg:text-7xl"
+            className="max-w-2xl text-[2.75rem] font-semibold leading-[0.98] tracking-[-0.035em] text-white sm:text-5xl lg:text-[4.25rem]"
             variants={textVariants}
             initial="hidden"
             animate="visible"
@@ -148,7 +147,7 @@ const Hero = () => {
           </motion.h1>
 
           <motion.p
-            className="mt-7 max-w-xl text-base leading-7 text-slate-200 sm:mt-8 sm:text-lg sm:leading-8"
+            className="mt-6 max-w-lg text-[0.95rem] leading-7 text-slate-200/90 sm:mt-7 sm:text-[1.05rem] sm:leading-8"
             variants={textVariants}
             initial="hidden"
             animate="visible"
@@ -158,35 +157,6 @@ const Hero = () => {
             {heroContent.description}
           </motion.p>
 
-          <motion.div
-            className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-3 sm:mt-10"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-          >
-            <motion.a
-              href="/#contact"
-              className="group inline-flex items-center gap-3 rounded-full bg-(--primary) px-6 py-3.5 text-sm font-bold text-slate-950 shadow-[0_12px_30px_rgba(0,160,210,0.22)]"
-              whileHover={{
-                scale: 1.05,
-                boxShadow: "0 0 32px rgba(103,232,249,0.35)",
-              }}
-              whileTap={{ scale: 0.97 }}
-              transition={{ type: "spring", stiffness: 400, damping: 17 }}
-            >
-              Start a conversation
-              <ArrowUpRight size={17} className="transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </motion.a>
-            <motion.a
-              href="#products"
-              className="group inline-flex items-center gap-2 px-2 py-3 text-sm font-semibold text-white transition hover:text-(--primary)"
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
-            >
-              Explore our approach
-              <ArrowDownRight size={17} className="transition group-hover:translate-y-1" />
-            </motion.a>
-          </motion.div>
         </div>
       </motion.div>
     </section>
