@@ -1,0 +1,45 @@
+@import "tailwindcss";
+
+@keyframes riseIn {
+	0% {
+		opacity: 0;
+		transform: translateY(22px);
+	}
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+:root {
+	--perspective: 1200px;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+.perspective-container {
+	perspective: var(--perspective);
+	transform-style: preserve-3d;
+}
+
+body {
+	margin: 0;
+	background: #06111d;
+	font-family: Inter, "Segoe UI", sans-serif;
+}
+
+.product-card-glow {
+	background: var(--product-accent);
+}
+
+.product-card:hover .product-card-sweep {
+	box-shadow: 0 0 18px color-mix(in srgb, var(--product-accent) 42%, transparent);
+}
+
+.feature-pill:hover .feature-icon {
+	color: var(--product-accent);
+	filter: drop-shadow(0 0 5px color-mix(in srgb, var(--product-accent) 70%, transparent));
+}
+
