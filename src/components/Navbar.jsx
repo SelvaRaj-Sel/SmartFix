@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { ArrowUpRight, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import logo from "../assets/Icon.png";
-import textlogo from "../assets/logo.png";
+import textlogo from "../assets/logo-1.png";
 import MobileNav from "./MobileNav.jsx";
 
 const Navbar = () => {
@@ -38,9 +38,9 @@ const navItems = [
 
   return (
     <header
-      className={`fixed left-0 right-0 z-50 transition-all duration-500 ${scrolled ? "top-0" : "top-12 lg:top-14"} ${
+      className={`fixed left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "shadow-lg backdrop-blur-xl"
+          ? "bg-[#0a5a90]"
           : "bg-transparent"
       }`}
     >
@@ -54,26 +54,20 @@ const navItems = [
           >
             <motion.div 
               whileHover={{ rotateY: 12 }}
-              className="relative flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-cyan-300/40 bg-cyan-300/10 shadow-[0_0_24px_rgba(34,211,238,0.12)] transition duration-300 group-hover:border-cyan-300/70 group-hover:bg-cyan-300/15 group-hover:shadow-[0_0_30px_rgba(34,211,238,0.24)]"
+              className="relative flex items-center justify-center rounded-xl"
             >
              
-              <img
-                src={logo}
-                alt="Smartfix logo"
-                className={`relative h-9 w-9 object-contain transition duration-300 group-hover:scale-105 ${
+             <img
+                src={textlogo}
+                alt="Smartfix"
+                className={`h-auto w-68 object-contain object-left ${
                   scrolled ? "brightness-90" : ""
                 }`}
               />
             </motion.div>
 
             <div className="hidden sm:block">
-              <img
-                src={textlogo}
-                alt="Smartfix"
-                className={`h-auto w-36 object-contain object-left ${
-                  scrolled ? "brightness-90" : ""
-                }`}
-              />
+              
               
             </div>
           </a>
@@ -157,7 +151,7 @@ const navItems = [
               href="/#contact"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.97 }}
-              className="group relative flex items-center gap-2 overflow-hidden rounded-full border border-cyan-400/40 bg-cyan-400 px-5 py-2.5 text-sm font-bold text-slate-950 transition-colors duration-300 hover:bg-cyan-300 hover:shadow-[0_0_30px_rgba(34,211,238,0.25)]"
+              className="group relative flex items-center gap-2 overflow-hidden rounded-full border border-cyan-400/40 bg-[#00A0D2] px-5 py-2.5 text-sm font-bold text-slate-950 transition-colors duration-300 hover:bg-[#14bdf0] hover:shadow-[0_0_30px_rgba(34,211,238,0.25)]"
             >
               <span>Get a Quote</span>
 

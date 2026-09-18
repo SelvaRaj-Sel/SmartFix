@@ -8,10 +8,10 @@ import heroIndustrial from "../assets/hero1.jpg";
 const slides = [
   {
     image: heroImage,
-    eyebrow: "Industrial Automation & System Integration",
-    title: ["Build smarter", "automate better."],
+    eyebrow: "We Are System Integrator",
+    title: ["Industrial Automation", "Powered by the Best."],
     description:
-      "We deliver reliable industrial automation solutions that connect machines, systems, and processes to improve efficiency, control, and productivity.",
+      "Your trusted product for Rockwell Automation and Siemens solutions. We deliver expert system integration, commissioning, migration, and 24/7 support for industries across India.",
     tag: "01 / Smart automation",
   },
   {
@@ -163,7 +163,7 @@ const Hero = () => {
               custom={0.1}
             >
               <span className="text-white">{currentSlide.title[0]} </span>
-              <span className="text-cyan-300">{currentSlide.title[1]}</span>
+              <span className="text-[#00A0D2]">{currentSlide.title[1]}</span>
             </motion.h1>
           </AnimatePresence>
 

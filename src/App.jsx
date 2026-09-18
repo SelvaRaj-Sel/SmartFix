@@ -68,7 +68,7 @@ function App() {
   return (
     <>
       <MouseGlow />
-      <Info />
+      {/* <Info /> */}
       <Navbar />
       <ScrollToHash />
       <AnimatePresence mode="wait">
