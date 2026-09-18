@@ -30,7 +30,7 @@ const MobileNav = ({ navItems, scrolled }) => {
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.35, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="absolute left-0 right-0 top-full overflow-hidden px-5 lg:hidden"
+            className="absolute left-30 right-2 top-20 overflow-hidden px-2 lg:hidden"
           >
             <div className="mb-5 rounded-2xl border border-white/10 bg-[#081525]/95 p-3 shadow-2xl backdrop-blur-xl">
               {navItems.map((item, index) => (
@@ -92,7 +92,7 @@ const MobileNav = ({ navItems, scrolled }) => {
                 href="/#contact"
                 onClick={closeMobileNav}
                 whileTap={{ scale: 0.95 }}
-                className="mt-3 flex items-center justify-center gap-2 rounded-xl bg-cyan-400 px-5 py-3 text-sm font-bold text-slate-950 transition hover:bg-cyan-300"
+                className="mt-3 flex items-center justify-center gap-2 rounded-xl bg-(--primary-dark) px-5 py-3 text-sm font-bold text-slate-950 transition hover:bg-cyan-300"
               >
                 Get a Quote
                 <ArrowUpRight size={17} />

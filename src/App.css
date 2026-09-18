@@ -1,3 +1,23 @@
 @import "tailwindcss";
 
-root{}
+:root {
+  --primary: #00A0D2;
+  --primary-dark: #0077B6;
+  --primary-glow: #00D4FF;
+  --accent: #00E5FF;
+  --accent2: #7B61FF;
+  --dark: #050A18;
+  --dark2: #0A1128;
+  --dark3: #0F1B3D;
+  --surface: #0C1632;
+  --surface2: #111D42;
+  --surface3: #162352;
+  --text: #E8EDF5;
+  --text-muted: #8899BB;
+  --white: #FFFFFF;
+  --rockwell-red: #C41230;
+  --siemens-teal: #009999;
+  --gradient1: linear-gradient(135deg, #00A8E8, #00E5FF);
+  --gradient2: linear-gradient(135deg, #7B61FF, #00A8E8);
+  --gradient3: linear-gradient(135deg, #00A8E8, #0077B6);
+}

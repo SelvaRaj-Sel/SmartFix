@@ -8,22 +8,20 @@ import AnimatedSection, { AnimatedItem } from "./AnimatedSection.jsx";
 const products = [
   {
     brand: "Rockwell Automation",
-    label: "Industrial control",
     title: "Integrated Allen-Bradley control, built for performance.",
     description:
       "Build dependable Rockwell Automation systems with Allen-Bradley PLC programming, PanelView HMI integration, PowerFlex VFD setup, Kinetix motion control, and GuardLogix safety engineering.",
-    accent: "#e11d48",
+    accent: "#C41230",
     logo: rockwellLogo,
     logoClass: "h-12 w-full object-contain sm:h-14",
     features: ["CompactLogix & ControlLogix", "PanelView HMIs", "PowerFlex VFDs", "Kinetix servo drives", "GuardLogix", "FactoryTalk", "Stratix"],
   },
   {
     brand: "Siemens",
-    label: "Digital industry",
     title: "Integrated engineering for a more efficient operation.",
     description:
       "Improve machine performance with Siemens SIMATIC PLCs, TIA Portal engineering, SINAMICS drives, SIMOTICS motors, Comfort Panel HMIs, PROFINET networks, and WinCC visualization.",
-    accent: "#22d3ee",
+    accent: "#009999",
     logo: siemensLogo,
     logoClass: "h-9 w-auto object-contain sm:h-11",
     features: ["SIMATIC S7-1200 & S7-1500", "SINAMICS drives", "SIMOTICS servo motors", "TIA Portal engineering", "Comfort Panels", "PROFINET", "WinCC"],
@@ -39,7 +37,7 @@ const BrandCard = ({ product }) => {
       style={{ ...tilt.style, "--product-accent": product.accent }}
       onMouseMove={tilt.onMouseMove}
       onMouseLeave={tilt.onMouseLeave}
-      className="product-card group relative overflow-hidden rounded-4xl border border-white/15 bg-[#0b1d2d] p-7 text-white shadow-[0_18px_55px_rgba(0,0,0,0.28)] hover:border-white/30 hover:shadow-[0_28px_75px_rgba(0,0,0,0.42)] sm:p-10"
+      className="product-card group relative overflow-hidden rounded-4xl border border-white/15 bg-(--dark2) p-7 text-white hover:border-white/30 sm:p-10"
     >
       <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(34,211,238,0.09),transparent_55%)] opacity-0 transition duration-300 group-hover:opacity-100" aria-hidden="true" />
 

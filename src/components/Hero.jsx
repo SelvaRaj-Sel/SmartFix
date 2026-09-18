@@ -6,31 +6,17 @@ import heroBackground from "../assets/hero-bg.jpg";
 import heroIndustrial from "../assets/hero1.jpg";
 
 const slides = [
-  {
-    image: heroImage,
-    eyebrow: "We Are System Integrator",
-    title: ["Industrial Automation", "Powered by the Best."],
-    description:
-      "Your trusted product for Rockwell Automation and Siemens solutions. We deliver expert system integration, commissioning, migration, and 24/7 support for industries across India.",
-    tag: "01 / Smart automation",
-  },
-  {
-    image: heroBackground,
-    eyebrow: "Precision in every process",
-    title: ["Control every operation", "with confidence."],
-    description:
-      "From PLC and HMI systems to VFD, servo, safety, and industrial networking, we engineer practical solutions for modern manufacturing environments.",
-    tag: "02 / Connected operations",
-  },
-  {
-    image: heroIndustrial,
-    eyebrow: "Engineering for real-world industry",
-    title: ["Automation that works", "for your industry."],
-    description:
-      "From installation and commissioning to migration, retrofitting, and ongoing support, Smartfix helps industries build reliable and future-ready automation systems.",
-    tag: "03 / Reliable engineering",
-  },
+  heroImage,
+  heroBackground,
+  heroIndustrial,
 ];
+
+const heroContent = {
+  eyebrow: "We Are System Integrator",
+  title: ["Industrial Automation", "Powered by the Best."],
+  description:
+    "Your trusted product for Rockwell Automation and Siemens solutions. We deliver expert system integration, commissioning, migration, and 24/7 support for industries across India.",
+};
 
 const textVariants = {
   hidden: { opacity: 0, y: 25, rotateX: -6 },
@@ -99,7 +85,7 @@ const Hero = () => {
     setActiveSlide((slideIndex + slides.length) % slides.length);
   };
 
-  const currentSlide = slides[activeSlide];
+  const currentImage = slides[activeSlide];
 
   return (
     <section
@@ -112,7 +98,7 @@ const Hero = () => {
       <AnimatePresence mode="wait">
         <motion.img
           key={activeSlide}
-          src={currentSlide.image}
+          src={currentImage}
           alt=""
           aria-hidden="true"
           className="absolute inset-0 h-full w-full object-cover"
@@ -134,62 +120,53 @@ const Hero = () => {
 
       {/* Content with parallax offset */}
       <motion.div
-        className="relative mx-auto flex h-full max-w-7xl items-end px-5 pb-12 pt-24 sm:px-8 lg:items-center lg:px-12 lg:pb-16"
+        className="relative mx-auto flex min-h-[650px] max-w-7xl items-center px-5 pb-28 pt-28 sm:px-8 lg:min-h-[760px] lg:px-12 lg:pb-24 lg:pt-32"
         style={{ y: contentY }}
       >
-        <div className="max-w-2xl" style={{ perspective: 800 }}>
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={`eyebrow-${activeSlide}`}
-              className="mb-7 flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.24em] text-cyan-300"
-              variants={textVariants}
-              initial="hidden"
-              animate="visible"
-              exit="exit"
-              custom={0}
-            >
-              {currentSlide.eyebrow}
-            </motion.div>
-          </AnimatePresence>
+        <div className="max-w-xl pl-5 sm:pl-8 lg:max-w-2xl" style={{ perspective: 800 }}>
+          <motion.div
+            className="mb-6 flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.24em] text-(--primary) sm:mb-8"
+            variants={textVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            custom={0}
+          >
+            {heroContent.eyebrow}
+          </motion.div>
 
-          <AnimatePresence mode="wait">
-            <motion.h1
-              key={`title-${activeSlide}`}
-              className="max-w-xl text-4xl font-semibold leading-[0.98] tracking-tight text-white sm:text-6xl lg:text-6xl"
-              variants={textVariants}
-              initial="hidden"
-              animate="visible"
-              exit="exit"
-              custom={0.1}
-            >
-              <span className="text-white">{currentSlide.title[0]} </span>
-              <span className="text-[#00A0D2]">{currentSlide.title[1]}</span>
-            </motion.h1>
-          </AnimatePresence>
+          <motion.h1
+            className="max-w-2xl text-2xl font-semibold leading-[0.98] tracking-tight text-white sm:text-6xl lg:text-7xl"
+            variants={textVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            custom={0.1}
+          >
+            <span className="text-white">{heroContent.title[0]} </span>
+            <span className="text-(--primary)">{heroContent.title[1]}</span>
+          </motion.h1>
 
-          <AnimatePresence mode="wait">
-            <motion.p
-              key={`description-${activeSlide}`}
-              className="mt-7 max-w-lg text-base leading-7 text-slate-200 sm:text-lg"
-              variants={textVariants}
-              initial="hidden"
-              animate="visible"
-              exit="exit"
-              custom={0.2}
-            >
-              {currentSlide.description}
-            </motion.p>
-          </AnimatePresence>
+          <motion.p
+            className="mt-7 max-w-xl text-base leading-7 text-slate-200 sm:mt-8 sm:text-lg sm:leading-8"
+            variants={textVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            custom={0.2}
+          >
+            {heroContent.description}
+          </motion.p>
 
           <motion.div
-            className="mt-9 flex flex-wrap items-center gap-4"
+            className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-3 sm:mt-10"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
             <motion.a
               href="/#contact"
-              className="group inline-flex items-center gap-3 rounded-full bg-cyan-300 px-6 py-3.5 text-sm font-bold text-slate-950"
+              className="group inline-flex items-center gap-3 rounded-full bg-(--primary) px-6 py-3.5 text-sm font-bold text-slate-950 shadow-[0_12px_30px_rgba(0,160,210,0.22)]"
               whileHover={{
                 scale: 1.05,
                 boxShadow: "0 0 32px rgba(103,232,249,0.35)",
@@ -202,7 +179,7 @@ const Hero = () => {
             </motion.a>
             <motion.a
               href="#products"
-              className="group inline-flex items-center gap-2 px-2 py-3 text-sm font-semibold text-white transition hover:text-cyan-300"
+              className="group inline-flex items-center gap-2 px-2 py-3 text-sm font-semibold text-white transition hover:text-(--primary)"
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
             >
@@ -210,39 +187,6 @@ const Hero = () => {
               <ArrowDownRight size={17} className="transition group-hover:translate-y-1" />
             </motion.a>
           </motion.div>
-
-          <div className="mt-14 flex items-center gap-5">
-            <span className="text-xs font-semibold tracking-[0.2em] text-white/65">{currentSlide.tag}</span>
-            <div className="h-px w-20 bg-white/25 sm:w-32">
-              <motion.div
-                className="h-px bg-cyan-300"
-                animate={{ width: `${((activeSlide + 1) / slides.length) * 100}%` }}
-                transition={{ duration: 0.5, ease: "easeInOut" }}
-              />
-            </div>
-            <div className="flex items-center gap-1">
-              <motion.button
-                type="button"
-                onClick={() => goToSlide(activeSlide - 1)}
-                className="rounded-full border border-white/20 p-2.5 text-white"
-                whileHover={{ borderColor: "rgba(103,232,249,0.7)", color: "rgb(103,232,249)" }}
-                whileTap={{ scale: 0.9 }}
-                aria-label="Previous slide"
-              >
-                <ChevronLeft size={17} />
-              </motion.button>
-              <motion.button
-                type="button"
-                onClick={() => goToSlide(activeSlide + 1)}
-                className="rounded-full border border-white/20 p-2.5 text-white"
-                whileHover={{ borderColor: "rgba(103,232,249,0.7)", color: "rgb(103,232,249)" }}
-                whileTap={{ scale: 0.9 }}
-                aria-label="Next slide"
-              >
-                <ChevronRight size={17} />
-              </motion.button>
-            </div>
-          </div>
         </div>
       </motion.div>
     </section>

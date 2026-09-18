@@ -38,11 +38,7 @@ const navItems = [
 
   return (
     <header
-      className={`fixed left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? "bg-[#0a5a90]"
-          : "bg-transparent"
-      }`}
+      className="fixed left-0 right-0 z-50 bg-[#010c14] transition-all duration-500"
     >
       <nav className="mx-auto max-w-7xl px-5 lg:px-8">
         <div className="flex h-18 items-center justify-between">
@@ -90,7 +86,7 @@ const navItems = [
                   href={item.href}
                   className={`group relative flex items-center gap-1 px-4 py-3 text-sm font-medium transition-colors duration-300 ${
                     scrolled
-                      ? "text-slate-400 hover:text-cyan-600"
+                      ? "text-slate-400 hover:text-(--primary)"
                       : "text-slate-300 hover:text-white"
                   }`}
                 >
