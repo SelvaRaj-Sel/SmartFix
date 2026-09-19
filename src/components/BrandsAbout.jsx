@@ -37,15 +37,15 @@ const BrandCard = ({ product }) => {
       <div className="product-card-glow absolute -right-20 -top-24 z-0 h-44 w-44 rounded-full opacity-0 blur-3xl transition duration-300 group-hover:scale-110 group-hover:opacity-20" />
       <div className="flex items-start justify-between gap-5">
         <div className="relative z-10 w-full">
-          <div className="product-logo-panel mt-4 flex h-14 w-fit max-w-48 items-center justify-center rounded-xl px-1">
+          <div className="product-logo-panel  flex h-14 w-fit max-w-48 items-center justify-center rounded-xl px-1">
             <img src={product.logo} alt="industrial automation logo" className={product.logoClass} />
           </div>
         </div>
       </div>
 
-      <div className="relative z-10 mt-10 flex-1">
+      <div className="relative z-10 mt-1 flex-1">
        
-        <p className="mt-4 text-sm leading-6 text-slate-300 sm:text-base">
+        <p className="mt-2 text-sm leading-6 text-slate-300 sm:text-base">
           {product.description}
         </p>
       </div>
@@ -64,20 +64,20 @@ const BrandCard = ({ product }) => {
 
 const BrandsAbout = () => {
   return (
-    <section id="brands" className="relative isolate overflow-hidden bg-[#020d1a] py-20 text-white sm:py-24">
+    <section id="brands" className="relative isolate overflow-hidden bg-[#020d1a] py-12 text-white sm:py-14">
       <div
         className="pointer-events-none absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(0,168,232,0.2),transparent)]"
         aria-hidden="true"
       />
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
-        <AnimatedSection variant="fadeUp" className="mb-12 max-w-4xl sm:mb-16">
+        <AnimatedSection variant="fadeUp" className="mb-8 max-w-4xl sm:mb-12">
           <div className="mb-5 flex items-center gap-3 text-xs font-bold uppercase tracking-[0.24em] text-(--primary)">
             <p className="inline-flex items-center rounded-full border border-cyan-400/25 bg-cyan-500/10 px-3 py-1.5 text-[0.7rem] font-bold uppercase tracking-[0.22em] text-(--primary)">
             Our Brands
           </p>
             
           </div>
-          <h2 className="max-w-3xl text-4xl font-semibold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
+          <h2 className="max-w-3xl text-[2.75rem] font-semibold leading-[0.98] tracking-[-0.035em] sm:text-5xl lg:text-[4.25rem]">
             The technology behind
             <span className="block text-(--primary)">better operations.</span>
           </h2>
@@ -94,10 +94,7 @@ const BrandsAbout = () => {
           ))}
         </AnimatedSection>
 
-        <div className="mt-8 flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">
-          <Gauge size={16} className="text-cyan-300" />
-          Integration, commissioning, and support from one team
-        </div>
+      
       </div>
     </section>
   );

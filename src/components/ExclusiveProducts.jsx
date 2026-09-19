@@ -80,87 +80,251 @@ const ProductCard = ({
 
   return (
     <motion.article
-      ref={tilt.ref}
-      style={{ ...tilt.style, perspective: 1200 }}
-      onMouseMove={tilt.onMouseMove}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => {
-        tilt.onMouseLeave();
-        setIsHovered(false);
-      }}
-      initial={{ opacity: 0, y: 50, rotateY: -5 }}
-      whileInView={{ opacity: 1, y: 0, rotateY: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{
-        duration: 0.55,
-        delay: index * 0.1,
-        ease: [0.25, 0.46, 0.45, 0.94],
-      }}
-      className="group relative flex h-full min-h-60 flex-col overflow-hidden rounded-[1.75rem] border border-sky-400/15 bg-(--dark2) p-7"
+  ref={tilt.ref}
+  style={{ ...tilt.style, perspective: 1200 }}
+  onMouseMove={tilt.onMouseMove}
+  onMouseEnter={() => setIsHovered(true)}
+  onMouseLeave={() => {
+    tilt.onMouseLeave();
+    setIsHovered(false);
+  }}
+  initial={{ opacity: 0, y: 50, rotateY: -5 }}
+  whileInView={{ opacity: 1, y: 0, rotateY: 0 }}
+  viewport={{ once: true, amount: 0.2 }}
+  transition={{
+    duration: 0.55,
+    delay: index * 0.1,
+    ease: [0.25, 0.46, 0.45, 0.94],
+  }}
+  className="
+    group relative flex min-h-[250px] h-full
+    overflow-hidden rounded-[1.75rem]
+    border border-sky-400/15
+    bg-(--dark2)
+    shadow-[0_15px_50px_rgba(0,0,0,0.18)]
+    transition-all duration-700
+    hover:border-cyan-300/30
+    hover:shadow-[0_25px_70px_rgba(0,160,210,0.16)]
+  "
+>
+  {/* ------------------------------------------------
+      HOVER IMAGE - RIGHT 50%
+  ------------------------------------------------ */}
+  {images.length > 0 && (
+    <div
+      className="
+        absolute inset-y-0 right-0 z-0
+        w-1/2 overflow-hidden
+        translate-x-full
+        opacity-0
+        transition-all duration-700
+        ease-[cubic-bezier(0.22,1,0.36,1)]
+        group-hover:translate-x-0
+        group-hover:opacity-100
+      "
     >
-      
+      <AnimatePresence mode="wait">
+        <motion.img
+          key={activeImage}
+          src={images[activeImage]}
+          alt={`${title} product image ${activeImage + 1}`}
+          initial={{
+            opacity: 0,
+            scale: 1.15,
+            x: 30,
+          }}
+          animate={{
+            opacity: 1,
+            scale: isHovered ? 1.05 : 1.15,
+            x: 0,
+          }}
+          exit={{
+            opacity: 0,
+            scale: 1.08,
+            x: -20,
+          }}
+          transition={{
+            duration: 0.5,
+            ease: [0.22, 1, 0.36, 1],
+          }}
+          className="
+            absolute inset-0
+            h-full w-full
+            object-cover
+          "
+        />
+      </AnimatePresence>
+
+      {/* Image dark overlay */}
       <div
-        className="absolute inset-0 bg-[linear-gradient(135deg,rgba(34,211,238,0.06),transparent_55%)] transition-opacity duration-500 group-hover:opacity-0"
-        aria-hidden="true"
+        className="
+          absolute inset-0
+          bg-gradient-to-r
+          from-[rgba(2,13,26,0.65)]
+          via-[rgba(2,13,26,0.15)]
+          to-transparent
+        "
       />
 
-      <div className="relative z-10 h-full flex flex-1 flex-col ">
-        {images.length > 0 && (
-          <div className="pointer-events-none absolute -inset-7 z-0 overflow-hidden bg-[#6689a8] opacity-0 transition-opacity duration-700 group-hover:opacity-100">
-            <AnimatePresence mode="wait">
-              <motion.img
-                key={activeImage}
-                src={images[activeImage]}
-                alt={`${title} product image ${activeImage + 1}`}
-                initial={{ opacity: 0, x: 16, scale: 1.06 }}
-                animate={{ opacity: 1, x: 0, scale: isHovered ? 1.2 : 1 }}
-                exit={{ opacity: 0, x: -16, scale: 0.98 }}
-                transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
-                className="absolute inset-0 h-full w-full object-cover"
-              />
-            </AnimatePresence>
-            <div
-              className="absolute inset-0 bg-[linear-gradient(115deg,rgba(2,13,26,0.94)_0%,rgba(2,13,26,0.8)_48%,rgba(2,13,26,0.28)_100%)]"
-              aria-hidden="true"
-            />
-          </div>
-        )}
-        <div className='ml-2 mt-2'>
- <div className="flex items-center gap-3">
-          <div
-            className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-cyan-300/35 bg-cyan-500/10 shadow-inner shadow-cyan-400/10 transition-transform duration-500 group-hover:scale-105"
-          >
-            <Icon size={30} className="text-cyan-300" />
-          </div>
-          <h3
-            className="relative z-10 max-w-[65%] text-[1.1rem] font-bold text-white drop-shadow-[0_4px_16px_rgba(0,0,0,0.55)]"
-          >
-            {title}
-          </h3>
-        </div>
-        <p
-          className="relative z-10 mt-4 w-60 flex-1 text-sm leading-7 text-slate-200"
+      {/* Bottom image gradient */}
+      <div
+        className="
+          absolute inset-0
+          bg-gradient-to-t
+          from-[rgba(2,13,26,0.75)]
+          via-transparent
+          to-transparent
+        "
+      />
+
+    </div>
+  )}
+
+  {/* ------------------------------------------------
+      CONTENT - LEFT 50%
+  ------------------------------------------------ */}
+  <div
+    className="
+      relative z-10
+      flex h-full w-full
+      flex-col
+      p-7
+      transition-all duration-700
+      ease-[cubic-bezier(0.22,1,0.36,1)]
+      group-hover:w-1/2
+      group-hover:pr-5
+    "
+  >
+    {/* Decorative glow */}
+    <div
+      className="
+        pointer-events-none
+        absolute -left-20 -top-20
+        h-40 w-40
+        rounded-full
+        bg-cyan-400/10
+        blur-3xl
+        transition-all duration-700
+        group-hover:scale-125
+        group-hover:bg-cyan-400/15
+      "
+    />
+
+    {/* Top content */}
+    <div className="relative z-10">
+      <div className="flex items-center gap-3">
+        {/* Icon */}
+        <div
+          className="
+            inline-flex h-12 w-12 shrink-0
+            items-center justify-center
+            rounded-2xl
+            border border-cyan-300/35
+            bg-(--dark2)
+            shadow-inner
+            shadow-cyan-400/10
+            transition-all duration-500
+            group-hover:border-cyan-300/60
+            group-hover:bg-cyan-400/10
+            group-hover:scale-105
+            group-hover:rotate-3
+          "
         >
-          {description}
-        </p>
+          <Icon
+            size={30}
+            className="
+              text-(--primary)
+              
+            "
+          />
         </div>
-       
+
+        <h3
+          className="
+            text-[1.1rem]
+            font-bold
+            leading-tight
+            text-white
+            drop-shadow-[0_4px_16px_rgba(0,0,0,0.55)]
+            transition-all duration-500
+            group-hover:text-cyan-100
+          "
+        >
+          {title}
+        </h3>
       </div>
-    </motion.article>
+
+      {/* Description */}
+      <p
+        className="
+          mt-5
+          text-sm
+          leading-7
+          text-slate-200
+          transition-all duration-500
+          group-hover:text-slate-100
+        "
+      >
+        {description}
+      </p>
+    </div>
+
+  
+    
+  </div>
+
+  {/* ------------------------------------------------
+      CENTER DIVIDER
+  ------------------------------------------------ */}
+  {images.length > 0 && (
+    <div
+      className="
+        pointer-events-none
+        absolute inset-y-0 left-1/2 z-20
+        w-px
+        bg-gradient-to-b
+        from-transparent
+        via-cyan-300/20
+        to-transparent
+        opacity-0
+        transition-opacity duration-700
+        group-hover:opacity-100
+      "
+    />
+  )}
+
+  {/* ------------------------------------------------
+      TOP SHINE EFFECT
+  ------------------------------------------------ */}
+  <div
+    className="
+      pointer-events-none
+      absolute inset-x-0 top-0 z-30
+      h-px
+      bg-gradient-to-r
+      from-transparent
+      via-cyan-300/40
+      to-transparent
+      opacity-0
+      transition-opacity duration-700
+      group-hover:opacity-100
+    "
+  />
+</motion.article>
   );
 };
 
 const ExclusiveProducts = () => (
   <section
     id="products"
-    className="relative overflow-hidden bg-[#020d1a] py-14 sm:py-18"
+    className="relative overflow-hidden bg-[#020d1a] py-12 sm:py-14"
     aria-labelledby="product-catalog-heading"
   >
     {/* top border */}
     <div
-        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(0,168,232,0.2),transparent)]"
-        aria-hidden="true"
-      />
+      className="pointer-events-none absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(0,168,232,0.2),transparent)]"
+      aria-hidden="true"
+    />
     <div className="relative mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
       <motion.header
         initial={{ opacity: 0, y: 30 }}
@@ -174,9 +338,10 @@ const ExclusiveProducts = () => (
           </p>
           <h2
             id="product-catalog-heading"
-            className="mt-5 text-4xl font-black tracking-[-0.06em] text-white sm:text-5xl lg:text-6xl"
+            className="mt-5 text-[2.75rem] text-white font-semibold leading-[0.98] tracking-[-0.035em] sm:text-5xl lg:text-[4.25rem]"
           >
-            Automation Product Categories
+            Automation Product
+            <span className="text-(--primary)"> Categories</span>
           </h2>
         </div>
 

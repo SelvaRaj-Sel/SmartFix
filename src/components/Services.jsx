@@ -13,12 +13,14 @@ import {
 } from "lucide-react";
 import { motion } from "framer-motion";
 import { use3DTilt } from "../hooks/use3DTilt.js";
+import tech from "../assets/hero.jpg";
 
 const services = [
  
   {
     id: "01",
     icon: BriefcaseBusiness,
+    bgimage: tech,
     title: "Technical Consultant",
     text: "Expert assessment of your automation needs with tailored Rockwell and Siemens solutions.",
   },
@@ -66,36 +68,206 @@ const services = [
   },
 ];
 
-const ServiceCard = ({ icon: Icon, title, text, index }) => {
+const ServiceCard = ({ icon: Icon, title, text, index, bgimage }) => {
   const tilt = use3DTilt({ maxRotation: 5 });
-  
+
   return (
     <motion.article
       ref={tilt.ref}
       style={{ ...tilt.style, perspective: 1200 }}
       onMouseMove={tilt.onMouseMove}
       onMouseLeave={tilt.onMouseLeave}
-      initial={{ opacity: 0, y: 40, rotateX: -10 }}
-      whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.5, delay: index * 0.08, ease: [0.25, 0.46, 0.45, 0.94] }}
-      className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.04] p-7 shadow-[0_18px_40px_rgba(2,6,23,0.22)] hover:border-cyan-300/35 hover:bg-white/[0.06]"
+      initial={{
+        opacity: 0,
+        y: 40,
+        rotateX: -10,
+      }}
+      whileInView={{
+        opacity: 1,
+        y: 0,
+        rotateX: 0,
+      }}
+      viewport={{
+        once: true,
+        amount: 0.2,
+      }}
+      transition={{
+        duration: 0.5,
+        delay: index * 0.08,
+        ease: [0.25, 0.46, 0.45, 0.94],
+      }}
+      className="
+        group relative
+        min-h-[320px]
+        overflow-hidden
+        rounded-3xl
+        border border-white/10
+        bg-(--dark2)
+        shadow-[0_18px_40px_rgba(2,6,23,0.22)]
+        transition-all duration-700
+        hover:border-cyan-300/35
+        hover:shadow-[0_25px_60px_rgba(0,160,210,0.20)]
+      "
     >
-      <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(34,211,238,0.08),transparent_55%)] opacity-0 transition duration-300 group-hover:opacity-100" aria-hidden="true" />
 
-      <div className="relative z-10">
-        <div className="inline-flex rounded-2xl border border-cyan-400/20 bg-cyan-500/10 p-3 text-cyan-300">
-          <Icon size={22} />
+      {/* =========================================
+          BACKGROUND IMAGE
+      ========================================= */}
+      {bgimage && (
+        <img
+          src={bgimage}
+          alt=""
+          aria-hidden="true"
+          className="
+            absolute inset-0
+            h-full w-full
+            object-cover
+            scale-100
+            transition-transform
+            duration-1000
+            ease-[cubic-bezier(0.22,1,0.36,1)]
+            group-hover:scale-110
+          "
+        />
+      )}
+
+      {/* =========================================
+          DARK SHADOW LAYER
+      ========================================= */}
+      <div
+        className="
+          absolute inset-0 z-[1]
+          bg-gradient-to-t
+          from-[#020d1a]/95
+          via-[#020d1a]/75
+          to-[#020d1a]/30
+          transition-all duration-700
+          group-hover:from-[#020d1a]/90
+          group-hover:via-[#020d1a]/60
+          group-hover:to-[#020d1a]/20
+        "
+        aria-hidden="true"
+      />
+
+      {/* =========================================
+          CYAN LIGHT EFFECT
+      ========================================= */}
+      <div
+        className="
+          pointer-events-none
+          absolute inset-0 z-[2]
+          bg-[radial-gradient(circle_at_80%_20%,rgba(34,211,238,0.18),transparent_40%)]
+          opacity-0
+          transition-opacity duration-700
+          group-hover:opacity-100
+        "
+        aria-hidden="true"
+      />
+
+      {/* =========================================
+          CONTENT
+      ========================================= */}
+      <div
+        className="
+          relative z-10
+          flex min-h-[320px]
+          flex-col justify-end
+          p-7
+          transition-transform duration-700
+          ease-[cubic-bezier(0.22,1,0.36,1)]
+          group-hover:-translate-y-2
+        "
+      >
+<div className="flex items-center justify-center gap-3">
+   {/* ICON */}
+        <div
+          className="
+            inline-flex
+            w-fit
+            rounded-2xl
+            border border-cyan-400/30
+            bg-(--dark2)
+            p-2
+            text-(--primary)
+            shadow-[0_8px_25px_rgba(0,0,0,0.30)]
+            backdrop-blur-md
+            transition-all duration-500
+            group-hover:scale-110
+            group-hover:border-cyan-300/60
+            group-hover:bg-(--dark2)/10
+            group-hover:shadow-[0_0_30px_rgba(34,211,238,0.20)]
+          "
+        >
+          <Icon
+            size={22}
+            className="
+              transition-transform duration-500
+              group-hover:scale-110
+            "
+          />
         </div>
-        <h3 className="mt-6 text-xl font-semibold text-white">{title}</h3>
-        <p className="mt-3 text-sm leading-6 text-slate-300">{text}</p>
+
+        {/* TITLE */}
+        <h3
+          className="            
+            text-[1.15rem]
+            font-semibold
+            text-white
+            drop-shadow-[0_4px_12px_rgba(0,0,0,0.85)]
+            transition-colors duration-500
+            group-hover:text-cyan-100
+          "
+        >
+          {title}
+        </h3>
+  </div>
+       
+
+        {/* DESCRIPTION */}
+        <p
+          className="
+            mt-3
+            text-sm
+            leading-6
+            text-slate-200
+            drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]
+          "
+        >
+          {text}
+        </p>
+
+        
       </div>
+
+      {/* =========================================
+          TOP BORDER SHINE
+      ========================================= */}
+      <div
+        className="
+          pointer-events-none
+          absolute inset-x-0 top-0 z-20
+          h-px
+          bg-gradient-to-r
+          from-transparent
+          via-cyan-300/50
+          to-transparent
+          opacity-0
+          transition-opacity duration-700
+          group-hover:opacity-100
+        "
+        aria-hidden="true"
+      />
+
     </motion.article>
   );
 };
 
 const Services = () => (
-  <section id="services" className="relative isolate overflow-hidden bg-[#020d1a] py-14 text-white sm:py-18">
+  <section id="services" className="relative isolate overflow-hidden bg-[#020d1a] py-12 text-white sm:py-14">
+     <div
+      className="pointer-events-none absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(0,168,232,0.2),transparent)]"
+      aria-hidden="true"
+    />
     <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
       <motion.div 
         initial={{ opacity: 0, y: 30 }} 
@@ -103,20 +275,16 @@ const Services = () => (
         viewport={{ once: true }}
         className="mb-12 max-w-3xl"
       >
-        <p className="inline-flex items-center rounded-full border border-cyan-400/25 bg-cyan-500/10 px-3 py-1.5 text-[0.7rem] font-bold uppercase tracking-[0.22em] text-cyan-300">
+        <p className="inline-flex items-center rounded-full border border-cyan-400/25 bg-cyan-500/10 px-3 py-1.5 text-[0.7rem] font-bold uppercase tracking-[0.22em] text-(--primary)">
           Our services
         </p>
-        <h2 className="mt-5 text-4xl font-semibold leading-tight tracking-tight sm:text-5xl">
-          From a single machine to a smarter operation.
+        <h2 className="mt-5 text-[2.75rem] font-semibold leading-[0.98] tracking-[-0.035em] sm:text-5xl lg:text-[4.25rem]">
+          From a single machine to a <span className="text-(--primary)">{""} smarter operation</span>
         </h2>
         <p className="mt-6 max-w-2xl leading-7 text-slate-300">
           Our engineers turn production requirements into robust, maintainable automation systems—without
           overcomplicating the work.
         </p>
-        <a href="/#contact" className="mt-8 inline-flex items-center gap-2 text-sm font-bold text-cyan-300 transition hover:text-white">
-          Discuss your project
-          <ArrowUpRight size={17} />
-        </a>
       </motion.div>
 
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
